@@ -1,0 +1,27 @@
+pipeline {
+    agent any 
+    stages{
+        stage("init"){
+            steps{
+                script{
+                    gv = load "sccript.groovy"
+                }
+            }
+        }
+        stage("build"){
+          steps{
+              script{
+                  gv.buildApp()
+              }
+           }  
+        }
+        stage("test"){
+          steps{
+              script{
+                  gv.testApp()
+               }
+           }
+        }
+    }
+}
+    
